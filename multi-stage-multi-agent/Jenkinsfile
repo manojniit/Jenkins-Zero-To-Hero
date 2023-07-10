@@ -6,18 +6,17 @@ pipeline {
         docker { image 'maven:3.8.1-adoptopenjdk-11' }
       }
       steps {
-        sh 'mvn --version'
+        sh 'mvn verify'
       }
       
     }
-    
-    
+        
     stage('Front-end') {
       agent {
         docker { image 'node:16-alpine' }
       }
       steps {
-        sh 'node --version'
+        sh 'npm install'
       }
     }
   }
